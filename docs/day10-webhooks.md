@@ -130,7 +130,7 @@ OpenClaw 的 `hooks.mappings` 功能允许你把任意 HTTP payload 转换成 Ag
 {
   "hooks": {
     "enabled": true,
-    "token": "${OPENCLAW_HOOKS_TOKEN}",
+    "token": "your-secret-token-here",
     "path": "/hooks",
     "defaultSessionKey": "hook:github",
     "allowRequestSessionKey": false,
@@ -266,7 +266,6 @@ curl -X POST http://127.0.0.1:18789/hooks/github \
 **收到 `401 Unauthorized`**
 
 - 检查 `Authorization: Bearer <token>` 的 token 值是否与配置一致
-- 注意：query-string 方式（`?token=xxx`）会被拒绝，只能用 Header
 
 **收到 `400 Bad Request`**
 
@@ -284,7 +283,6 @@ curl -X POST http://127.0.0.1:18789/hooks/github \
 ## ✅ 今日练习
 
 - 在 `openclaw.json` 中启用 hooks，重启后用 Step 5 的 curl 命令测试 `/hooks/github` 端点能正常返回 `200`
-- 创建 `hooks` Agent 并配置代码评审人格
 - 配置 GitHub Mapping，用模拟 payload 验证分诊报告能推送到 Telegram 或飞书
 - （进阶）修改 Mapping 的 `channel` 字段，尝试同时推送到两个渠道
 
